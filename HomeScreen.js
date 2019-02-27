@@ -1,10 +1,13 @@
 import React from "react";
-import { View, Text,Button,Platform,TextInput} from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { View, Text,Button,Platform,TextInput,TouchableHighlight} from "react-native";
+import { createStackNavigator, createAppContainer,createDrawerNavigator} from "react-navigation";
 import DetailsScreen from './DetailsScreen'
 import Color from './Color'
+import Modal from './Modal'
+
 
 class HomeScreen extends React.Component {
+  
   constructor(props){
     super(props);
     this.state={
@@ -20,16 +23,22 @@ class HomeScreen extends React.Component {
      
    }
    static navigationOptions = ({ navigation }) => {
-    // headerTitle: <Color />,
+ 
+ 
     return {
-      headerTitle: <Color />,
+      headerTitle:'wellcom',
+      headerTitleStyle:{marginLeft:100,color:'red'},
       headerRight: (
+        <TouchableHighlight onPress={()=>navigation.openDrawer()} style={{width:50,height:30,backgroundColor:'skyblue',marginRight:10,justifyContent:'center',alignItems:'center'}}><Text>press</Text></TouchableHighlight>
+      ),
+      headerLeft: (
         <Button
-          onPress={navigation.getParam('increaseCount')}
-          title="+"
-          color={Platform.OS === 'ios' ? '#fff' : null}
+          onPress={() => navigation.navigate('kazem')}
+          title="Info"
+          color="blue"
         />
       ),
+      
     };
     
     // headerStyle: {
@@ -57,6 +66,7 @@ class HomeScreen extends React.Component {
         <Text style={{fontSize:24}}>Home Screen</Text>
         <TextInput onChangeText={this.newtext}style={{width:200,height:50,borderWidth:1}}/>
         <Text>{this.state.count}</Text>
+        
         <View style={{margin:10}}>
         <Button
           title="Go to Details"
@@ -69,21 +79,49 @@ class HomeScreen extends React.Component {
           }}
         />
         </View>
+        
       </View>
 
     );
   }
 }
 
+
+
 const AppNavigator = createStackNavigator(
 {
     Home: HomeScreen,
-    Details: DetailsScreen
+    Details: DetailsScreen,
+    kazem:Modal
   },
+  {
+    mode:'modal',
+  },
+
   {
     initialRouteName: "Home"
   }
 );
 
+const rootstack = createDrawerNavigator(
+  {
+      Home: AppNavigator
+      
+    },
+    {
+        drawerPosition:'right',
+        drawerType:'slide'
+    },
+    {
+      mode:'modal',
+    },
+  
+    {
+      initialRouteName: "Home"
+    }
+  );
+  
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(rootstack);
+
+

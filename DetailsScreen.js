@@ -6,14 +6,25 @@ import {createStackNavigator,createAppContainer,createBottomTabNavigator} from '
 
 
 class  DetailsScreen extends Component {
-
-static navigationOptions = ({ navigation }) => {
-
-
-    return {
-      title: navigation.getParam('otherParam', 'hello navigation'),
+  
+  
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    return{
+        // title: navigation.getParam('name', 'NO-ID'),
+        title :  params ? params.name : 'A Nested Details Screen' ,
+        headerStyle: {
+            backgroundColor: '#ffffe6',
+          },
+          headerTintColor: '#999999',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
     };
-  };
+    
+    // title: 'Go to Home',  
+};
+
  
     render() {
     
@@ -32,10 +43,7 @@ static navigationOptions = ({ navigation }) => {
           title="Go To Home"
           onPress={() => this.props.navigation.navigate('Home')}
         />
-        <Button
-    title="Update the title"
-    onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
-  />
+   
 
 
 <Button
@@ -74,6 +82,7 @@ static navigationOptions = ({ navigation }) => {
           backgroundColor: '#F9E79F',
          
         },
+        
       }
 
     },
