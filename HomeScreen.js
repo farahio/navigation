@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text,Button,Platform,TextInput,TouchableHighlight} from "react-native";
+import { StyleSheet,View, Text,Button,Platform,TextInput,TouchableHighlight} from "react-native";
 import { createStackNavigator, createAppContainer,createDrawerNavigator} from "react-navigation";
 import DetailsScreen from './DetailsScreen'
 import Color from './Color'
@@ -62,9 +62,9 @@ class HomeScreen extends React.Component {
   render() {
 
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor:'#64D8DE' }}>
+      <View style={styles.view1}>
         <Text style={{fontSize:24}}>Home Screen</Text>
-        <TextInput onChangeText={this.newtext}style={{width:200,height:50,borderWidth:1}}/>
+        <TextInput onChangeText={this.newtext}style={styles.text1}/>
         <Text>{this.state.count}</Text>
         
         <View style={{margin:10}}>
@@ -85,7 +85,22 @@ class HomeScreen extends React.Component {
     );
   }
 }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   
+    
+  },
+  text1:{width:200,
+    height:50,
+    borderWidth:1
+  },
+  view1:{ flex: 1,
+     alignItems: "center",
+      justifyContent: "center",
+      backgroundColor:'#64D8DE'
+     }
+})
 
 
 const AppNavigator = createStackNavigator(

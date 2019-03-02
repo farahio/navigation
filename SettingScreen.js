@@ -7,7 +7,7 @@ import {createAppContainer} from 'react-navigation'
 
     render() {
       return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor:'#D3274E'}}>
+        <View style={styles.View1}>
           <Text style={{fontSize:24,color:'#C6E71E'}}>Setting Screen</Text>
        
          <View style={{margin:10}}>
@@ -31,7 +31,17 @@ import {createAppContainer} from 'react-navigation'
       );
     }
   }
- 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+     
+      
+    },
+    view1:{ flex: 1,
+       alignItems: "center",
+        justifyContent: "center",
+        backgroundColor:'#D3274E'}
+  })
 
   
 

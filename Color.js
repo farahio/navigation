@@ -5,8 +5,17 @@ import { View, Text,Button,TextInput,Image} from "react-native";
     return (
       <Image
         source={require('./asecct/reddit.png')}
-        style={{ width: 40, height: 40 ,marginLeft:10}}
+        style={styles.img}
       />
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   
+    
+  },
+img:{ width: 40, height: 40 ,marginLeft:10}
+
+})

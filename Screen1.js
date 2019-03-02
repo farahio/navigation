@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View,ActivityIndicator,Image,Dimensions} from 'react-native';
+import { Button, View,ActivityIndicator,Image,Dimensions,StyleSheet} from 'react-native';
 import { createSwitchNavigator,createAppContainer} from 'react-navigation';
 import HomeScreen from './HomeScreen';
 let dim = Dimensions.get('window')
@@ -17,7 +17,7 @@ setTimeout(()=>this.props.navigation.navigate('Home'),1000);
         }}>
         <Image
           source={require('./asecct/farah.png.jpg')}
-          style={{width:dim.width,height:dim.height,position:'absolute'}}
+          style={styles.image}
         />
         {/* <Button
           title={'Canada'}
@@ -31,7 +31,14 @@ setTimeout(()=>this.props.navigation.navigate('Home'),1000);
     );
   }
 }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+   
+    
+  },
+  image:{width:dim.width,height:dim.height,position:'absolute'}
+})
 
 const MyNavigator = createSwitchNavigator({
   screen1: Screen1,

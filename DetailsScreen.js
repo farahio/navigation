@@ -1,5 +1,5 @@
 import React ,{Component} from "react";
-import { View, Text,Button} from "react-native";
+import {StyleSheet, View, Text,Button} from "react-native";
 import ProfileScreen from './ProfileScreen'
 import SettingScreen from './SettingScreen'
 import {createStackNavigator,createAppContainer,createBottomTabNavigator} from 'react-navigation'
@@ -33,8 +33,8 @@ class  DetailsScreen extends Component {
       const name = navigation.getParam('name')?navigation.getParam('name'):'khali';
     
       return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center",backgroundColor:'#48C9B0'}}>
-          <Text style={{fontSize:24,color:'#041DF3'}}>Details Screen</Text>
+        <View style={styles.view1}>
+          <Text style={styles.text1}>Details Screen</Text>
          
           <Text>{JSON.stringify(name)}</Text>
        
@@ -60,6 +60,21 @@ class  DetailsScreen extends Component {
       );
     }
   }
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+     
+      
+    },
+    view1:{ flex: 1,
+       alignItems: "center",
+        justifyContent: "center",
+        backgroundColor:'#48C9B0'},
+        text1:{
+          fontSize:24,
+          color:'#041DF3'
+        }
+  })
   const AppNavigator = createBottomTabNavigator(
     {
       Profile:ProfileScreen,
